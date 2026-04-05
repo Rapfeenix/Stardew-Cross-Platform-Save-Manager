@@ -23,3 +23,10 @@
 backup/restore your save file 
 
 8.Enjoy doing your farm in clossplatform for linux and android :)
+
+🚀 Next Work-flow:
+
+-Windows support
+-Automatic Backup Feature
+-Standalone android application support
+-IOS/MAC support
