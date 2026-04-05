@@ -16,11 +16,6 @@ StardewSync let you back up and restore your save file from your pc to cloud sto
 
 *GUI & Shortcut: Features an intuitive menu built with Zenity and a dedicated .desktop entry, allowing for a seamless "point-and-click" experience directly from the Ubuntu app launcher.
 
-*XML Auto-Patching: Utilizes sed to automatically update <uiScale> and <zoomLevel> within the save files during the Restore process. This ensures the game's UI and scaling are perfectly adjusted the moment it's launched.
-
-*Rclone Integration: Leverages rclone to provide stable and reliable cloud synchronization with Google Drive.
-
-*GUI & Shortcut: Features an intuitive menu built with Zenity and a dedicated .desktop entry, allowing for a seamless "point-and-click" experience directly from the Ubuntu app launcher.
 
 🛠️ How to use:
 
