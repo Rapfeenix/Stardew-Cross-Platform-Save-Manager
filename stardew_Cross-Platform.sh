@@ -4,7 +4,7 @@
 LOCAL="/home/phoenix/snap/steam/common/.config/StardewValley/Saves"
 REMOTE="budi:Stardew Valley Save"
 
-
+#you can also change the resolution to your need
 apply_anjay_settings() {
     
     find "$LOCAL" -type f -not -name "*SaveGameInfo*" -not -name "*.vdf" | while read -r save_file; do

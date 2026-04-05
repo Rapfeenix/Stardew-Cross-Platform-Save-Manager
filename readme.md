@@ -1,3 +1,7 @@
+*Have you ever spent a whole evening decorating your farms? If you had, then you know how suck it is to go to work the next day, and unable to finish what you do.
+
+*Lucky for you now you can play the same stardew valley farm on both your pc and mobile phone with StardewSync ^-^
+
 🛠️ How to use:
 
 1.Install rclone and connect your choice of cloud storage
@@ -26,7 +30,7 @@ backup/restore your save file
 
 🚀 Next Work-flow:
 
--Windows support
--Automatic Backup Feature
--Standalone android application support
--IOS/MAC support
+*Windows support
+*Automatic Backup Feature
+*Standalone android application support
+*IOS/MAC support
