@@ -1,16 +1,14 @@
-Have you ever spent a whole evening decorating your farms? If you had, then you know how suck it is to go to work the next day, and unable to finish what you do.
+**Have you ever spent a whole evening decorating your farms? If you had, then you know how suck it is to go to work the next day, and unable to finish what you do.**
 
 Lucky for you now you can play the same stardew valley farm on both your pc and mobile phone with StardewSync ^_^
 
-StardewSync let you back up and restore your save file from your pc to cloud storage with rclone.
+StardewSync let you back up and restore your save file from your pc to cloud storage with rclone. It uses zenity for simple gui, so that you can do the backup and restore with a single click.
 
-It uses zenity for simple gui, so that you can do the backup and restore with a single click.
+*Also, it has the ability to change the resolution/uiscale/zoomlevel in your save file automatically.*
 
-Also, it has the ability to change the resolution/uiscale/zoomlevel in your save file automatically. 
+**Your game will scale up perfectly on both your pc and mobile without additional step!**
 
-Your game will scale up perfectly on both your pc and mobile without additional step!
-
-Technical points:
+💡 Technical points:
 
 *XML Auto-Patching: Utilizes sed to automatically update <uiScale> and <zoomLevel> within the save files during the Restore process. This ensures the game's UI and scaling are perfectly adjusted the moment it's launched.
 
