@@ -34,7 +34,7 @@ case "$choice" in
         
         
         if rclone copy "$LOCAL" "$REMOTE"; then
-            zenity --info --title="Success" --text="✅ Adjusted to anjay settings & Backed up to Drive!" --width=350
+            zenity --info --title="Success" --text="✅ Adjusted to settings & Backed up to Drive!" --width=350
         else
             zenity --error --title="Error" --text="❌ Backup failed." --width=300
         fi
@@ -47,7 +47,7 @@ case "$choice" in
            
             apply_anjay_settings
             
-            zenity --info --title="Success" --text="✅ Retrieval & UI Adjustment (Jacob Style) Successful!" --width=350
+            zenity --info --title="Success" --text="✅ Retrieval & UI Adjustment Successful!" --width=350
         else
             zenity --error --title="Error" --text="❌ Retrieval failed." --width=300
         fi

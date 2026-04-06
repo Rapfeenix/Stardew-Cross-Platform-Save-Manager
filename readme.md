@@ -34,26 +34,26 @@ Features an intuitive menu built with Zenity and a dedicated .desktop entry, all
 
 <br>
 
-## 🛠️ How to use:
+## 🛠️ How to use StardewSync on Linux:
 
-1.Install rclone and connect your choice of cloud storage
+1.Install rclone and connect your choice of cloud storage (gdrive/onedrive/etc)
 
-2.Install Zenity
+2.Install zenity
 
-3.Download stardew_Cross-Platform.sh
+3.Download StardewSync_linux.sh
     
-4.Open stardew_Cross-Platform.sh with text editor and change this:
+4.Open the StardewSync_linux.sh with text editor and change this:
 
         LOCAL="/home/yourname/snap/steam/common/.config/StardewValley/Saves"
 and this:
 <br>
 ```
-        REMOTE="budi:Stardew Valley Save" 
+        REMOTE="YourCloudStorage(onedrive/gdrive/etc):YourLocation" 
 ```
 to your own need
 <br>
 <br>
-5.Download StardewSync.desktop and move it to:
+5.Download StardewSync_Linux.desktop and move it to:
 
         /home/yourname/.local/share/applications/
 
@@ -68,6 +68,27 @@ backup/restore your save file
 
 <br>
 <br>
+
+## How to backup and restore Stardew valley files on your phone 📱
+
+1. Download and install FolderSync from playstore 
+2. Add a cloud storage account (gdrive/onedrive/etc) thay you used on rclone
+3. Create FolderPair
+4. Choose two way
+5. Get internal storage for the left folder and pick this location:
+
+        /storage/emulated/0/Android/data/com/chucklefish.stardewvalley/files/Saves/
+
+6. Get cloud service for your right folder and pick this location:
+
+        YourCloudStorage(onedrive/gdrive/etc):YourLocation
+<br>
+(the same one that you connect on rclone, linuc)
+
+7. Save
+
+8. Sync when you need it ^_^
+
 
 ## 🚀 Next Work-flow:
 
