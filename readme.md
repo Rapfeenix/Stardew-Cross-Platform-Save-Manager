@@ -1,5 +1,5 @@
-**Have you ever spent a whole evening decorating your farms? If you had, then you know how suck much if sucks to go to work the next day, and unable to finish what you do.**
-Lucky for you now you can play the same stardew valley farm on both your pc and mobile phone, so you can continue your grind anywhere with StardewSync ^_^
+**Have you ever spent a whole evening decorating your farms on your pc? If you have, then you know how much it sucks to go to work the next day, and unable to finish what you do.**
+Lucky for you, now, you can play the same stardew valley farm, on both your pc and mobile phone. You can literally continue your grind anywhere on any device with StardewSync ^_^
 <br>
 
 StardewSync let you back up and restore your save file from your pc to cloud storage with rclone. It uses zenity for simple gui, so that you can do the backup and restore with a single click.
