@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Stardew Sync
 Comment=Sync Stardew Valley saves to Google Drive
-Exec=bash "/home/phoenix/Documents/VsCode/Stardew Cross-Platform Save Manager/stardew_Cross-Platform.sh"
+Exec=bash "/home/phoenix/Documents/VsCode/Stardew Cross-Platform Save Manager/StardewSync_linux.sh"
 Icon=document-save
 Terminal=false
 Type=Application
