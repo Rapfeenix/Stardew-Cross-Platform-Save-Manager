@@ -35,11 +35,17 @@ StardewSync let you back up and restore your save file from your pc to cloud sto
 
 3.Download stardew_Cross-Platform.sh
     
-4.Open stardew_Cross-Platform.sh with text editor and change this to your own location:
+4.Open stardew_Cross-Platform.sh with text editor and change this:
 
         LOCAL="/home/yourname/snap/steam/common/.config/StardewValley/Saves"
-        REMOTE="budi:Stardew Valley Save
-
+and this:
+<br>
+```
+        REMOTE="budi:Stardew Valley Save" 
+```
+to your own need
+<br>
+<br>
 5.Download StardewSync.desktop and move it to:
 
         /home/yourname/.local/share/applications/
