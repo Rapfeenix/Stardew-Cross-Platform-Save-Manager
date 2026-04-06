@@ -1,3 +1,5 @@
+# StardewSync : Stardew Valley Cross-Platform Save Manager
+
 **Have you ever spent a whole evening decorating your farms on your pc? If you have, then you know how much it sucks to go to work the next day, and unable to finish what you do.**
 Lucky for you, now, you can play the same stardew valley farm, on both your pc and mobile phone. You can literally continue your grind anywhere on any device with StardewSync ^_^
 <br>
@@ -15,19 +17,24 @@ StardewSync let you back up and restore your save file from your pc to cloud sto
 <br>
 
 
+## 💡 Technical points:
 
-💡 Technical points:
+### XML Auto-Patching
+<br>
+ Utilizes sed to automatically update <uiScale> and <zoomLevel> within the save files during the Restore process. This ensures the game's UI and scaling are perfectly adjusted the moment it's launched.
 
-*XML Auto-Patching: Utilizes sed to automatically update <uiScale> and <zoomLevel> within the save files during the Restore process. This ensures the game's UI and scaling are perfectly adjusted the moment it's launched.
+### Rclone Integration
+<br>
+ Leverages rclone to provide stable and reliable cloud synchronization with Google Drive.
 
-*Rclone Integration: Leverages rclone to provide stable and reliable cloud synchronization with Google Drive.
-
-*GUI & Shortcut: Features an intuitive menu built with Zenity and a dedicated .desktop entry, allowing for a seamless "point-and-click" experience directly from the Ubuntu app launcher.
+### GUI & Shortcut: 
+<br>
+Features an intuitive menu built with Zenity and a dedicated .desktop entry, allowing for a seamless "point-and-click" experience directly from the Ubuntu app launcher.
 
 
 <br>
 
-🛠️ How to use:
+## 🛠️ How to use:
 
 1.Install rclone and connect your choice of cloud storage
 
@@ -62,12 +69,12 @@ backup/restore your save file
 <br>
 <br>
 
-🚀 Next Work-flow:
+## 🚀 Next Work-flow:
 
-*Windows support
+### Windows support
 
-*Automatic Backup Feature
+### Automatic Backup Feature
 
-*Standalone android application support
+### Standalone android application support
 
-*IOS/MAC support
+### IOS/MAC support
