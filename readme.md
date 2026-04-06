@@ -1,24 +1,13 @@
 **Have you ever spent a whole evening decorating your farms? If you had, then you know how suck much if sucks to go to work the next day, and unable to finish what you do.**
-
-<br>
-<br>
-<br>
-
 Lucky for you now you can play the same stardew valley farm on both your pc and mobile phone, so you can continue your grind anywhere with StardewSync ^_^
 <br>
-<br>
-<br>
+
 StardewSync let you back up and restore your save file from your pc to cloud storage with rclone. It uses zenity for simple gui, so that you can do the backup and restore with a single click.
 
-<br>
-<br>
 <br>
 
 
 *Also, it has the ability to change the resolution/uiscale/zoomlevel in your save file automatically.*
-<br>
-<br>
-<br>
 **Your game will scale up perfectly on both your pc and mobile without additional step!**
 
 <br>
@@ -36,14 +25,6 @@ StardewSync let you back up and restore your save file from your pc to cloud sto
 *GUI & Shortcut: Features an intuitive menu built with Zenity and a dedicated .desktop entry, allowing for a seamless "point-and-click" experience directly from the Ubuntu app launcher.
 
 
-<br>
-<br>
-<br><br>
-<br>
-<br>
-
-<br>
-<br>
 <br>
 
 🛠️ How to use:
@@ -74,12 +55,6 @@ backup/restore your save file
 
 <br>
 <br>
-<br>
-
-<br>
-<br>
-<br>
-
 
 🚀 Next Work-flow:
 
