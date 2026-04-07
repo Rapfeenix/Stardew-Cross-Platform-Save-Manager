@@ -17,23 +17,7 @@ StardewSync let you back up and restore your save file from your pc to cloud sto
 <br>
 
 
-## 💡 Technical points:
 
-### XML Auto-Patching
-<br>
- Utilizes sed to automatically update <uiScale> and <zoomLevel> within the save files during the Restore process. This ensures the game's UI and scaling are perfectly adjusted the moment it's launched.
-
-### Rclone Integration
-<br>
- Leverages rclone to provide stable and reliable cloud synchronization with Google Drive.
-
-### GUI & Shortcut: 
-<br>
-Features an intuitive menu built with Zenity and a dedicated .desktop entry, allowing for a seamless "point-and-click" experience directly from the Ubuntu app launcher.
-
-
-
-<br>
 
 ## 🛠️ How to use StardewSync on Windows:
 
@@ -47,7 +31,7 @@ Features an intuitive menu built with Zenity and a dedicated .desktop entry, all
         set "REMOTE_SAVE=%OneDrive%\yourlocation"
 <br>
 
-to your stardew valley save folder location on onedrive
+to stardew valley save folder location that you want on onedrive
 
 <br>
 <br>
@@ -139,7 +123,7 @@ backup/restore your save file
 
         YourCloudStorage(onedrive/gdrive/etc):YourLocation
 <br>
-(the same one that you connect on rclone, linuc)
+(the same one that you connect on rclone, linux)
 
 7. Save
 
@@ -147,6 +131,23 @@ backup/restore your save file
 
 <br>
 
+## 💡 Technical points:
+
+### XML Auto-Patching
+<br>
+ Utilizes sed to automatically update <uiScale> and <zoomLevel> within the save files during the Restore process. This ensures the game's UI and scaling are perfectly adjusted the moment it's launched.
+
+### Rclone Integration
+<br>
+ Leverages rclone to provide stable and reliable cloud synchronization with Google Drive.
+
+### GUI & Shortcut: 
+<br>
+Features an intuitive menu built with Zenity and a dedicated .desktop entry, allowing for a seamless "point-and-click" experience directly from the Ubuntu app launcher.
+
+
+
+<br>
 
 ## 🚀 Next Work-flow:
 
