@@ -46,8 +46,10 @@ Features an intuitive menu built with Zenity and a dedicated .desktop entry, all
 
         set "REMOTE_SAVE=%OneDrive%\yourlocation"
 <br>
+
 to your stardew valley save folder location on onedrive
 
+<br>
 <br>
 
 4.Rename the extention of file from StardewSync.txt to StardewSync.bat
