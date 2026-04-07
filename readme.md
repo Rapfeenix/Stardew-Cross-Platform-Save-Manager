@@ -35,10 +35,12 @@ to stardew valley save folder location that you want on onedrive
 
 <br>
 <br>
-4. Find this in the txt
 
-        <preferredResolutionX>1280</preferredResolutionX>
+4.Find this in the txt
 
+```
+<preferredResolutionX>1280</preferredResolutionX>
+````
 and this:
 
 ```
