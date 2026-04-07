@@ -69,6 +69,34 @@ backup/restore your save file
 <br>
 <br>
 
+## 🛠️ How to use StardewSync on Windows:
+
+1. Download StardewSync.txt
+2. Open it with text editor
+3. Change this:
+
+
+        set "REMOTE_SAVE=%OneDrive%\yourlocation"
+<br>
+to your stardew valley save folder on onedrive
+<br>
+
+4. Rename the extention of file from StardewSync.txt to StardewSync.bat
+
+<br>
+
+5. Run StardewSync.bat
+
+<br>
+6. Picc the choice that you want (backup/restore) 
+
+<br>
+
+7. Enjoy doing your farm in clossplatform for windows and android :)
+
+<br>
+<br>
+
 ## How to backup and restore Stardew valley files on your phone 📱
 
 1. Download and install FolderSync from playstore 
