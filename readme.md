@@ -32,6 +32,61 @@ StardewSync let you back up and restore your save file from your pc to cloud sto
 Features an intuitive menu built with Zenity and a dedicated .desktop entry, allowing for a seamless "point-and-click" experience directly from the Ubuntu app launcher.
 
 
+
+<br>
+
+## 🛠️ How to use StardewSync on Windows:
+
+1.Download StardewSync.txt
+
+2.Open it with text editor
+
+3.Change this:
+
+
+        set "REMOTE_SAVE=%OneDrive%\yourlocation"
+<br>
+to your stardew valley save folder location on onedrive
+
+<br>
+
+4.Rename the extention of file from StardewSync.txt to StardewSync.bat
+
+<br>
+
+5.Run StardewSync.bat
+
+<br>
+
+6.Pick the choice that you want (backup/restore) 
+
+<br>
+
+7.Enjoy doing your farm in clossplatform for windows and android :)
+
+<br>
+<br>
+
+## How to backup and restore Stardew valley files on your phone (crossplatform windows) 📱
+
+1. Download and install FolderSync from playstore 
+2. Add onedrive account that you used on your windows
+3. Create FolderPair
+4. Choose two way
+5. Get internal storage for the left folder and pick this location:
+
+        /storage/emulated/0/Android/data/com/chucklefish.stardewvalley/files/Saves/
+
+6. Get cloud service for your right folder and pick this location:
+
+        Onedrive:YourLocation
+<br>
+(the same location that you put on StardewSync.bat)
+
+7. Save
+
+8. Sync before and after you play on android ^_^
+
 <br>
 
 ## 🛠️ How to use StardewSync on Linux:
@@ -67,40 +122,11 @@ backup/restore your save file
 8.Enjoy doing your farm in clossplatform for linux and android :)
 
 <br>
-<br>
 
-## 🛠️ How to use StardewSync on Windows:
-
-1. Download StardewSync.txt
-2. Open it with text editor
-3. Change this:
-
-
-        set "REMOTE_SAVE=%OneDrive%\yourlocation"
-<br>
-to your stardew valley save folder on onedrive
-<br>
-
-4. Rename the extention of file from StardewSync.txt to StardewSync.bat
-
-<br>
-
-5. Run StardewSync.bat
-
-<br>
-6. Picc the choice that you want (backup/restore) 
-
-<br>
-
-7. Enjoy doing your farm in clossplatform for windows and android :)
-
-<br>
-<br>
-
-## How to backup and restore Stardew valley files on your phone 📱
+## How to backup and restore Stardew valley files on your phone (Crossplatform linux) 📱
 
 1. Download and install FolderSync from playstore 
-2. Add a cloud storage account (gdrive/onedrive/etc) thay you used on rclone
+2. Add a cloud storage account (gdrive/onedrive/etc) that you used on rclone
 3. Create FolderPair
 4. Choose two way
 5. Get internal storage for the left folder and pick this location:
@@ -115,12 +141,12 @@ to your stardew valley save folder on onedrive
 
 7. Save
 
-8. Sync when you need it ^_^
+8. Sync before and after you play on android ^_^
+
+<br>
 
 
 ## 🚀 Next Work-flow:
-
-### Windows support
 
 ### Automatic Backup Feature
 
