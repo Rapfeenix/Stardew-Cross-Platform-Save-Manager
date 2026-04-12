@@ -1,16 +1,17 @@
 # StardewSync : Stardew Valley Cross-Platform Save Manager
 
-**Have you ever spent a whole evening decorating your farms on your pc? If you have, then you know how much it sucks to go to work the next day, and unable to finish what you do.**
-Lucky for you, now, you can play the same stardew valley farm, on both your pc and mobile phone. You can literally continue your grind anywhere on any device with StardewSync ^_^
+**Have you ever spent a whole evening decorating your farms on your pc? If you have, you know how much it sucks to go to work the next day and be unable to finish what you do.**
+
+Lucky for you, you can now play the same Stardew Valley farm on both your PC and your mobile phone. Continuing your grind anywhere on any device is possible with **StardewSync,** making your gameplay more flexible and stress-free ^_^. 
 <br>
 
-On linux, StardewSync let you back up and restore your save file from your pc to cloud storage with rclone. It uses zenity for simple gui, so that you can do the backup and restore with a single click. On the other hand, windows version utilize built-in onedrive, also with similar simplicity
+On Linux, StardewSync lets you back up and restore your save file from your pc to cloud storage with rclone. It uses Zenity for a simple GUI, so you can back up and restore with a single click. On the other hand, Windows versions use built-in OneDrive, which is similarly simple, helping you feel more secure about managing your data.
 
 <br>
 
 
-*Also, it has the ability to change the resolution/uiscale/zoomlevel in your save file automatically.*
-**Your game will scale up perfectly on both your pc and mobile without additional step!**
+*Also, it can automatically change the resolution/uiscale/zoomlevel in your save file.*
+**Your game will scale up perfectly on both your pc and mobile, making your experience smoother and dependable without additional step!**
 
 <br>
 <br>
