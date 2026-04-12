@@ -5,7 +5,7 @@
 Lucky for you, you can now play the same Stardew Valley farm on both your PC and your mobile phone. Continuing your grind anywhere on any device is possible with **StardewSync,** making your gameplay more flexible and stress-free ^_^. 
 <br>
 
-On Linux, **StardewSync** lets you back up and restore your save file from your pc to cloud storage with rclone. It uses Zenity for a simple GUI, so you can back up and restore with a single click. On the** other hand, Windows versions use built-in OneDrive, which is similarly simple, helping you feel more secure about managing your data.
+On Linux, **StardewSync** lets you back up and restore your save file from your pc to cloud storage with rclone. It uses Zenity for a simple GUI, so you can back up and restore with a single click. On the other hand, Windows versions use built-in OneDrive, which is similarly simple, helping you feel more secure about managing your data.
 
 <br>
 
