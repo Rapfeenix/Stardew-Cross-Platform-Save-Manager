@@ -1,7 +1,30 @@
 #!/bin/bash
+if [ ! -f "$CONFIG_FILE" ]; then
+   
+    PROVIDER=$(zenity --list --title="Cloud Setup" --text="Choose your cloud provider:" \
+        --column="Provider" "google drive" "onedrive" "dropbox" --width=300 --height=250)
+
+    if [ -z "$PROVIDER" ]; then exit 0; fi
+
+   
+    case "$PROVIDER" in
+        "google drive") TYPE="drive"; NAME="gdrive" ;;
+        "onedrive") TYPE="onedrive"; NAME="onedrive" ;;
+        "dropbox") TYPE="dropbox"; NAME="dropbox" ;;
+    esac
+
+    zenity --info --text="I will now open your browser to log in to $PROVIDER.\n\nAfter you click 'Allow', come back to this app." --width=350
+
+    
+    rclone config create "$NAME" "$TYPE"
+
+    
+    echo "$NAME" > "$CONFIG_FILE"
+    zenity --info --text="Setup Complete! Connected to $NAME." --timeout=2
+fi
 
 ICON_PATH="$HOME/.local/share/icons/StardewSync.png"
-DESKTOP_FILE="$HOME/.local/share/applications/stardewsync.desktop"
+DESKTOP_FILE="$HOME/.local/share/applications/StardewSync.desktop"
 
 if [ ! -f "$DESKTOP_FILE" ]; then
     # 1. Download the icon silently
