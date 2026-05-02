@@ -1,4 +1,23 @@
 #!/bin/bash
+
+ICON_PATH="$HOME/.local/share/icons/StardewSync.png"
+DESKTOP_FILE="$HOME/.local/share/applications/stardewsync.desktop"
+
+
+if [ ! -f "$ICON_PATH" ]; then
+    mkdir -p "$(dirname "$ICON_PATH")"
+    curl -sSL "https://raw.githubusercontent.com/Rapfeenix/Stardew-Cross-Platform-Save-Manager/main/StardewSync.png" -o "$ICON_PATH"
+fi
+
+
+if [ ! -f "$DESKTOP_FILE" ]; then
+    if zenity --question --title="StardewSync Setup" --text="Would you like to add StardewSync to your Application Menu?" --width=350; then
+        echo -e "[Desktop Entry]\nType=Application\nName=StardewSync\nComment=Sync Saves & Fix UI\nExec=stardewsync\nIcon=$ICON_PATH\nTerminal=false\nCategories=Game;" > "$DESKTOP_FILE"
+        chmod +x "$DESKTOP_FILE"
+        zenity --info --text="Shortcut created! You can now launch StardewSync from your app menu." --timeout=3
+    fi
+fi
+
 sync_with_progress() {
     local mode=$1  # This will be "Backup" or "Restore"
     local src=$2   # Source path
