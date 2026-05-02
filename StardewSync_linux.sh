@@ -71,7 +71,7 @@ if [ ! -f "$CONFIG_FILE" ]; then
     zenity --info --text="Setup Complete! Using remote: **$SELECTED_REMOTE**" --timeout=2
 fi
 
-# Load the saved remote
+
 USER_REMOTE=$(cat "$CONFIG_FILE")
 REMOTE="$USER_REMOTE:Stardew Valley Save"
 
@@ -101,7 +101,7 @@ find "$LOCAL" -type f -not -name "*SaveGameInfo*" -not -name "*.vdf" -not -name 
 }
 
 
-choice=$(zenity --list --title="Stardew Sync & Fix" --column="Action" "Backup" "Restore" --width=250 --height=220)
+choice=$(zenity --list --title="Stardew Sync & Fix" --column="Action" "Backup" "Restore" --width=500 --height=500)
 
 case "$choice" in
     "Backup")
