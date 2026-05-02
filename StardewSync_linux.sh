@@ -110,15 +110,6 @@ if [ ! -d "$LOCAL" ]; then
 fi
 
 
-    SELECTED_REMOTE=$(echo "$REMOTES" | zenity --list --title="Select Cloud Remote" --column="Available Remotes" --width=300 --height=300)
-
-    if [ -z "$SELECTED_REMOTE" ]; then
-        exit 0
-    fi
-
-    echo "$SELECTED_REMOTE" > "$CONFIG_FILE"
-    zenity --info --text="Setup Complete! Using remote: **$SELECTED_REMOTE**" --timeout=2
-fi
 
 
 USER_REMOTE=$(cat "$CONFIG_FILE")
