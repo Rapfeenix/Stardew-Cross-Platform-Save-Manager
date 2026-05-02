@@ -1,7 +1,52 @@
 #!/bin/bash
 
-#changethistoyourlocations
-LOCAL="/home/phoenix/snap/steam/common/.config/StardewValley/Saves"
+PATH_SNAP="$HOME/snap/steam/common/.config/StardewValley/Saves"
+PATH_FLATPAK="$HOME/.var/app/com.valvesoftware.Steam/.config/StardewValley/Saves"
+PATH_NATIVE="$HOME/.config/StardewValley/Saves"
+
+if [ -d "$PATH_SNAP" ]; then
+    DETECTED="Snap"
+    LOCAL="$PATH_SNAP"
+elif [ -d "$PATH_FLATPAK" ]; then
+    DETECTED="Flatpak"
+    LOCAL="$PATH_FLATPAK"
+elif [ -d "$PATH_NATIVE" ]; then
+    DETECTED="Native"
+    LOCAL="$PATH_NATIVE"
+else
+    DETECTED="None"
+fi
+
+
+USE_DETECTED=false
+
+if [ "$DETECTED" != "None" ]; then
+    if zenity --question --title="Confirm Path" --text="I found a $DETECTED version of Stardew Valley.\n\nPath: $LOCAL\n\nIs this the correct folder?" --width=400; then
+        USE_DETECTED=true
+    fi
+fi
+
+if [ "$USE_DETECTED" = false ]; then
+    CHOICE=$(zenity --list --radiolist --title="Select Save Location" \
+        --column="Pick" --column="Version" \
+        TRUE "Snap" \
+        FALSE "Flatpak" \
+        FALSE "Native" \
+        --width=300 --height=250)
+
+    case "$CHOICE" in
+        "Snap") LOCAL="$PATH_SNAP" ;;
+        "Flatpak") LOCAL="$PATH_FLATPAK" ;;
+        "Native") LOCAL="$PATH_NATIVE" ;;
+        *) exit 0 ;; # Exit if they close the window
+    esac
+fi
+
+if [ ! -d "$LOCAL" ]; then
+    zenity --error --title="Error" --text="The selected folder does not exist:\n$LOCAL"
+    exit 1
+fi
+
 REMOTE="budi:Stardew Valley Save"
 
 #you can also change the resolution to your need
