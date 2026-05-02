@@ -102,13 +102,14 @@ find "$LOCAL" -type f -not -name "*SaveGameInfo*" -not -name "*.vdf" -not -name 
 
 
 choice=$(zenity --list --title="Stardew Sync & Fix" \
-    --hide-header --column="Action" \
-    "<span font='24'>Backup</span>" \
-    "<span font='24'>Restore</span>" \
+    --column="Action" \
+    "Backup" \
+    "Restore" \
+    --hide-header \
     --width=500 --height=500)
 
 case "$choice" in
-    *"Backup"*)
+    "Backup")
        
         apply_anjay_settings
         
@@ -120,7 +121,7 @@ case "$choice" in
         fi
         ;;
         
-    *"Restore"*)
+    "Restore")
         
         if rclone copy "$REMOTE" "$LOCAL"; then
             
