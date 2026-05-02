@@ -47,7 +47,34 @@ if [ ! -d "$LOCAL" ]; then
     exit 1
 fi
 
-REMOTE="budi:Stardew Valley Save"
+CONFIG_FILE="$HOME/.stardew_sync_config"
+
+
+if [ ! -f "$CONFIG_FILE" ]; then
+    zenity --info --title="First Run Setup" --text="Welcome! Let's link your Cloud account.\n\nI will now show you your existing Rclone remotes." --width=350
+
+    # Get list of remotes and let user pick
+    REMOTES=$(rclone listremotes | sed 's/://')
+
+    if [ -z "$REMOTES" ]; then
+        zenity --error --text="No Rclone remotes found! Please run 'rclone config' in a terminal first to add Google Drive, Dropbox, etc."
+        exit 1
+    fi
+
+    SELECTED_REMOTE=$(echo "$REMOTES" | zenity --list --title="Select Cloud Remote" --column="Available Remotes" --width=300 --height=300)
+
+    if [ -z "$SELECTED_REMOTE" ]; then
+        exit 0
+    fi
+
+    # Save the choice to the config file
+    echo "$SELECTED_REMOTE" > "$CONFIG_FILE"
+    zenity --info --text="Setup Complete! Using remote: **$SELECTED_REMOTE**" --timeout=2
+fi
+
+# Load the saved remote
+USER_REMOTE=$(cat "$CONFIG_FILE")
+REMOTE="$USER_REMOTE:Stardew Valley Save
 
 SCREEN_RES=$(xrandr | grep '*' | head -n1 | awk '{print $1}')
 WIDTH=$(echo $SCREEN_RES | cut -d'x' -f1)
