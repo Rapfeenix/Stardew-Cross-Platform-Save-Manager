@@ -102,10 +102,10 @@ find "$LOCAL" -type f -not -name "*SaveGameInfo*" -not -name "*.vdf" -not -name 
 
 
 choice=$(zenity --list --title="Stardew Sync CrossPlatform-save" \
-    --column="Action" \
+    --column="Options" \
     "Backup" \
     "Restore" \
-    --width=500 --height=500)
+    --width=300 --height=300)
 
 case "$choice" in
     "Backup")
