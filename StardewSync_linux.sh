@@ -1,4 +1,8 @@
 #!/bin/bash
+CONFIG_FILE="$HOME/.stardew_sync_config"
+ICON_PATH="$HOME/.local/share/icons/StardewSync.png"
+DESKTOP_FILE="$HOME/.local/share/applications/StardewSync.desktop"
+
 if [ ! -f "$CONFIG_FILE" ]; then
    
     PROVIDER=$(zenity --list --title="Cloud Setup" --text="Choose your cloud provider:" \
@@ -23,8 +27,6 @@ if [ ! -f "$CONFIG_FILE" ]; then
     zenity --info --text="Setup Complete! Connected to $NAME." --timeout=2
 fi
 
-ICON_PATH="$HOME/.local/share/icons/StardewSync.png"
-DESKTOP_FILE="$HOME/.local/share/applications/StardewSync.desktop"
 
 if [ ! -f "$DESKTOP_FILE" ]; then
     # 1. Download the icon silently
@@ -107,19 +109,6 @@ if [ ! -d "$LOCAL" ]; then
     exit 1
 fi
 
-CONFIG_FILE="$HOME/.stardew_sync_config"
-
-
-if [ ! -f "$CONFIG_FILE" ]; then
-    zenity --info --title="First Run Setup" --text="Welcome! Let's link your Cloud account.\n\nI will now show you your existing Rclone remotes." --width=350
-
-    # Get list of remotes and let user pick
-    REMOTES=$(rclone listremotes | sed 's/://')
-
-    if [ -z "$REMOTES" ]; then
-        zenity --error --text="No Rclone remotes found! Please run 'rclone config' in a terminal first to add Google Drive, Dropbox, etc."
-        exit 1
-    fi
 
     SELECTED_REMOTE=$(echo "$REMOTES" | zenity --list --title="Select Cloud Remote" --column="Available Remotes" --width=300 --height=300)
 
