@@ -1,20 +1,19 @@
 #!/bin/bash
 
 ICON_PATH="$HOME/.local/share/icons/StardewSync.png"
-DESKTOP_FILE="$HOME/.local/share/applications/StardewSync.desktop"
-
-
-if [ ! -f "$ICON_PATH" ]; then
-    mkdir -p "$(dirname "$ICON_PATH")"
-    curl -sSL "https://raw.githubusercontent.com/Rapfeenix/Stardew-Cross-Platform-Save-Manager/main/StardewSync.png" -o "$ICON_PATH"
-fi
-
+DESKTOP_FILE="$HOME/.local/share/applications/stardewsync.desktop"
 
 if [ ! -f "$DESKTOP_FILE" ]; then
-    if zenity --question --title="StardewSync Setup" --text="Would you like to add StardewSync to your Application Menu?" --width=350; then
+    # 1. Download the icon silently
+    mkdir -p "$(dirname "$ICON_PATH")"
+    curl -sSL "https://raw.githubusercontent.com/Rapfeenix/Stardew-Cross-Platform-Save-Manager/main/StardewSync.png" -o "$ICON_PATH"
+
+    # 2. Ask to create the shortcut
+    if zenity --question --title="StardewSync Setup" --text="Installation successful!\n\nWould you like to add StardewSync to your Application Menu (Start Menu) for easy access?" --width=350; then
         echo -e "[Desktop Entry]\nType=Application\nName=StardewSync\nComment=Sync Saves & Fix UI\nExec=stardewsync\nIcon=$ICON_PATH\nTerminal=false\nCategories=Game;" > "$DESKTOP_FILE"
         chmod +x "$DESKTOP_FILE"
-        zenity --info --text="Shortcut created! You can now launch StardewSync from your app menu." --timeout=3
+        
+        zenity --info --text="Perfect! You can now find StardewSync in your App Menu anytime.\n\nOpening the main menu now..." --timeout=3
     fi
 fi
 
