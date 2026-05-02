@@ -1,4 +1,23 @@
 #!/bin/bash
+sync_with_progress() {
+    local mode=$1  # This will be "Backup" or "Restore"
+    local src=$2   # Source path
+    local dest=$3  # Destination path
+
+    # -P tells rclone to output progress percentages
+    # awk filters the text so it only sends numbers (0-100) to Zenity
+    rclone copy "$src" "$dest" -P 2>&1 | \
+    awk -vRS='\r' 'match($0, /[0-9]+%/) {print substr($0, RSTART, RLENGTH-1); fflush()}' | \
+    zenity --progress \
+        --title="StardewSync - $mode" \
+        --text="Currently $mode-ing your farm saves..." \
+        --percentage=0 \
+        --auto-close \
+        --width=450
+
+    # Return the exit status of the rclone command
+    return ${PIPESTATUS[0]}
+}
 
 PATH_SNAP="$HOME/snap/steam/common/.config/StardewValley/Saves"
 PATH_FLATPAK="$HOME/.var/app/com.valvesoftware.Steam/.config/StardewValley/Saves"
@@ -108,28 +127,28 @@ choice=$(zenity --list --title="StardewSync CrossPlatform-Save" \
     --width=300 --height=300)
 
 case "$choice" in
-    "Backup")
-       
+    *"Backup"*)
         apply_anjay_settings
         
-        
-        if rclone copy "$LOCAL" "$REMOTE"; then
-            zenity --info --title="Success" --text="✅ Adjusted to settings & Backed up to Drive!" --width=350
+        # Calling the progress function
+        if sync_with_progress "Backup" "$LOCAL" "$REMOTE"; then
+            zenity --info --title="Success" \
+                --text="<span font='13'>✅ <b>Settings adjusted & Backed up!</b>\n\nYour farm is now safe in the cloud.</span>" \
+                --width=400
         else
-            zenity --error --title="Error" --text="❌ Backup failed." --width=300
+            zenity --error --title="Error" --text="❌ Backup failed. Please check your internet or rclone config."
         fi
         ;;
         
-    "Restore")
-        
-        if rclone copy "$REMOTE" "$LOCAL"; then
-            
-           
+    *"Restore"*)
+        # Calling the progress function
+        if sync_with_progress "Restore" "$REMOTE" "$LOCAL"; then
             apply_anjay_settings
-            
-            zenity --info --title="Success" --text="✅ Retrieval & UI Adjustment Successful!" --width=350
+            zenity --info --title="Success" \
+                --text="<span font='13'>✅ <b>Retrieval & UI Adjustment Successful!</b>\n\nWelcome back to the farm!</span>" \
+                --width=400
         else
-            zenity --error --title="Error" --text="❌ Retrieval failed." --width=300
+            zenity --error --title="Error" --text="❌ Retrieval failed."
         fi
         ;;
         
