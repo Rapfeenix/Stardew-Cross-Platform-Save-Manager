@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ICON_PATH="$HOME/.local/share/icons/StardewSync.png"
-DESKTOP_FILE="$HOME/.local/share/applications/stardewsync.desktop"
+DESKTOP_FILE="$HOME/.local/share/applications/StardewSync.desktop"
 
 
 if [ ! -f "$ICON_PATH" ]; then
