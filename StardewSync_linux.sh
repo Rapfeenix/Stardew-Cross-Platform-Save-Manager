@@ -49,23 +49,28 @@ fi
 
 REMOTE="budi:Stardew Valley Save"
 
-#you can also change the resolution to your need
-apply_anjay_settings() {
-    
-    find "$LOCAL" -type f -not -name "*SaveGameInfo*" -not -name "*.vdf" | while read -r save_file; do
-        
-      
-        sed -i 's/<preferredResolutionX>[-0-9.]*<\/preferredResolutionX>/<preferredResolutionX>1280<\/preferredResolutionX>/g' "$save_file"
-        
-        
-        sed -i 's/<preferredResolutionY>[-0-9.]*<\/preferredResolutionY>/<preferredResolutionY>720<\/preferredResolutionY>/g' "$save_file"
-        
-       
-        sed -i 's/<uiScale>[-0-9.]*<\/uiScale>/<uiScale>1<\/uiScale>/g' "$save_file"
-        
-       
-        sed -i 's/<zoomLevel>[-0-9.]*<\/zoomLevel>/<zoomLevel>1<\/zoomLevel>/g' "$save_file"
-        
+SCREEN_RES=$(xrandr | grep '*' | head -n1 | awk '{print $1}')
+WIDTH=$(echo $SCREEN_RES | cut -d'x' -f1)
+HEIGHT=$(echo $SCREEN_RES | cut -d'x' -f2)
+
+
+zenity --info --text="Detected Resolution: ${WIDTH}x${HEIGHT}" --timeout=2
+
+
+WIDTH=${WIDTH:-1280}
+HEIGHT=${HEIGHT:-720}
+
+
+apply_anjay_settings() 
+
+{
+find "$LOCAL" -type f -not -name "*SaveGameInfo*" -not -name "*.vdf" -not -name "*_old" | while read -r save_file; do
+        sed -i \
+            -e "s/<preferredResolutionX>[0-9.]*<\/preferredResolutionX>/<preferredResolutionX>${WIDTH}<\/preferredResolutionX>/g" \
+            -e "s/<preferredResolutionY>[0-9.]*<\/preferredResolutionY>/<preferredResolutionY>${HEIGHT}<\/preferredResolutionY>/g" \
+            -e 's/<uiScale>[0-9.]*<\/uiScale>/<uiScale>1<\/uiScale>/g' \
+            -e 's/<zoomLevel>[0-9.]*<\/zoomLevel>/<zoomLevel>1<\/zoomLevel>/g' \
+            "$save_file"
     done
 }
 
