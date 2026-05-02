@@ -35,7 +35,7 @@ if [ ! -f "$DESKTOP_FILE" ]; then
 
     
     if zenity --question --title="StardewSync Setup" --text="Installation successful!\n\nWould you like to add StardewSync to your Application Menu (Start Menu) for easy access?" --width=350; then
-        echo -e "[Desktop Entry]\nType=Application\nName=StardewSync\nComment=Sync Saves & Fix UI\nExec=stardewsync\nIcon=$ICON_PATH\nTerminal=false\nCategories=Game;" > "$DESKTOP_FILE"
+        echo -e "[Desktop Entry]\nType=Application\nName=stardewsync\nComment=Sync Saves & Fix UI\nExec=stardewsync\nIcon=$ICON_PATH\nTerminal=false\nCategories=Game;" > "$DESKTOP_FILE"
         chmod +x "$DESKTOP_FILE"
         
         zenity --info --text="Perfect! You can now find StardewSync in your App Menu anytime.\n\nOpening the main menu now..." --timeout=3
