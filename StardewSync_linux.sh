@@ -1,7 +1,7 @@
 #!/bin/bash
 CONFIG_FILE="$HOME/.stardew_sync_config"
 ICON_PATH="$HOME/.local/share/icons/StardewSync.png"
-DESKTOP_FILE="$HOME/.local/share/applications/StardewSync.desktop"
+DESKTOP_FILE="$HOME/.local/share/applications/stardewsync.desktop"
 
 if [ ! -f "$CONFIG_FILE" ]; then
    
@@ -34,11 +34,11 @@ if [ ! -f "$DESKTOP_FILE" ]; then
     curl -sSL "https://raw.githubusercontent.com/Rapfeenix/Stardew-Cross-Platform-Save-Manager/main/StardewSync.png" -o "$ICON_PATH"
 
     
-    if zenity --question --title="StardewSync Setup" --text="Installation successful!\n\nWould you like to add StardewSync to your Application Menu (Start Menu) for easy access?" --width=350; then
+    if zenity --question --title="stardewsync Setup" --text="Installation successful!\n\nWould you like to add stardewsync to your Application Menu (Start Menu) for easy access?" --width=350; then
         echo -e "[Desktop Entry]\nType=Application\nName=stardewsync\nComment=Sync Saves & Fix UI\nExec=stardewsync\nIcon=$ICON_PATH\nTerminal=false\nCategories=Game;" > "$DESKTOP_FILE"
         chmod +x "$DESKTOP_FILE"
         
-        zenity --info --text="Perfect! You can now find StardewSync in your App Menu anytime.\n\nOpening the main menu now..." --timeout=3
+        zenity --info --text="Perfect! You can now find stardewsync in your App Menu anytime.\n\nOpening the main menu now..." --timeout=3
     fi
 fi
 
