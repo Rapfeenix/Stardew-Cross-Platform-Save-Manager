@@ -67,14 +67,13 @@ if [ ! -f "$CONFIG_FILE" ]; then
         exit 0
     fi
 
-    # Save the choice to the config file
     echo "$SELECTED_REMOTE" > "$CONFIG_FILE"
     zenity --info --text="Setup Complete! Using remote: **$SELECTED_REMOTE**" --timeout=2
 fi
 
 # Load the saved remote
 USER_REMOTE=$(cat "$CONFIG_FILE")
-REMOTE="$USER_REMOTE:Stardew Valley Save
+REMOTE="$USER_REMOTE:Stardew Valley Save"
 
 SCREEN_RES=$(xrandr | grep '*' | head -n1 | awk '{print $1}')
 WIDTH=$(echo $SCREEN_RES | cut -d'x' -f1)
