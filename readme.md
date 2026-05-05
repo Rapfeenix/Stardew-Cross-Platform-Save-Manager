@@ -1,18 +1,39 @@
-# StardewSync : Stardew Valley Cross-Platform Save Manager
+# StardewSync: Your Farm, Anywhere.
 
-**Have you ever spent a whole evening decorating your farms on your pc? If you have, you know how much it sucks to go to work the next day and be unable to finish what you do.**
+Ever spent an entire evening perfectly placing every keg and beehive on your PC, only to realize you’re stuck staring at a spreadsheet the next day instead of finishing your masterpiece?
 
-Lucky for you, you can now play the same Stardew Valley farm on both your PC and your mobile phone. Continuing your grind anywhere on any device is possible with **StardewSync,** making your gameplay more flexible and stress-free ^_^. 
-<br>
+**StardewSync** bridges the gap between your desk and your pocket. It’s a lightweight, cross-platform save manager that ensures your grind never has to stop, making your gameplay as flexible as a Forest Farm layout.
 
-On Linux, **StardewSync** lets you back up and restore your save file from your pc to cloud storage with rclone. It uses Zenity for a simple GUI, so you can back up and restore with a single click. On the other hand, Windows versions use built-in OneDrive, which is similarly simple, helping you feel more secure about managing your data.
+---
 
-<br>
+### **The Magic: Intelligent Auto-Scaling**
+The biggest headache with cross-platform saves is the UI. A save file optimized for a small mobile screen looks massive and awkward on a 27-inch PC monitor.
 
+**StardewSync handles the math for you.** It automatically detects your device's display and rewrites the resolution, UI scale, and zoom level within your save file during the transfer. When you move your save from Android to PC, it’s already perfectly upscaled for your desktop—no menu-fiddling required.
 
-*Also, it can automatically change the resolution/uiscale/zoomlevel in your save file.*
-**Your game will scale up perfectly on both your pc and mobile, making your experience smoother and dependable without additional step!**
+---
 
+### **How It Works**
+We’ve kept the setup lean and native to your OS so you can spend more time farming and less time configuring:
+
+* **Linux Power:** Uses `rclone` for robust cloud backups and **Zenity** for a clean, one-click GUI.
+* **Windows Integration:** Leverages built-in **OneDrive** support for a seamless, "set it and forget it" experience.
+* **Zero Manual Work:** The app automatically detects your save folder paths and device resolution, ensuring your data is always secure and your view is always clear.
+
+---
+
+### **Why Choose StardewSync?**
+
+| Feature | Benefit |
+| :--- | :--- |
+| **Auto-Resolution** | Seamlessly scales mobile saves up for the big screen. |
+| **One-Click Sync** | Backup or restore your farm in seconds. |
+| **Cloud-Agnostic** | Works with your existing storage (OneDrive/Rclone). |
+| **Smart Detection** | Automatically finds your save folders and hardware specs. |
+
+---
+
+**Stop leaving your farm behind. Download StardewSync and keep the harvest going, anywhere.**
 <br>
 <br>
 <br>
