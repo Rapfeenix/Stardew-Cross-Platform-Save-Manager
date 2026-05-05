@@ -112,46 +112,33 @@ You can launch the sync manager whenever you want to play:
 **Enjoy your cross-platform farm between Linux and Android! :)**
 
 <br>
+## 📱 How to Setup: Backup and Restore Stardew Valley Files (Cross-platform Linux)
 
-## How to set up: backup and restore Stardew valley files on your phone (Crossplatform linux) 📱
+Follow these steps to ensure your farm stays synced between your Linux PC and your Android device using **FolderSync**.
 
-1. Download and install FolderSync from playstore 
-2. Add a cloud storage account (gdrive/onedrive/etc) that you used on rclone
-3. Create FolderPair
-4. Choose two way
-5. Get internal storage for the left folder and pick this location:
+---
 
-        /storage/emulated/0/Android/data/com/chucklefish.stardewvalley/files/Saves/
+### ⚙️ Configuration Steps
 
-6. Get cloud service for your right folder and pick this location:
+1.  **Download & Install:** Get [FolderSync](https://play.google.com/store/apps/details?id=dk.tacit.android.foldersync.lite) from the Google Play Store.
+2.  **Account Setup:** Add the **Cloud Account** (OneDrive, Google Drive, etc.) that you connected to **rclone** on your Linux PC.
+3.  **Create FolderPair:** Create a new "FolderPair" to link your local and cloud directories.
+4.  **Sync Type:** Select **Two-way** to ensure progress is updated on both your phone and the cloud.
+5.  **Local Folder (Left):** Select **Internal Storage** and navigate to the following path:
+    > `/storage/emulated/0/Android/data/com.chucklefish.stardewvalley/files/Saves/`
+6.  **Cloud Folder (Right):** Select your **Cloud Service** and navigate to:
+    > `YourRcloneCloud:Stardew Valley Save`
+7.  **Save:** Tap the save icon to store your configuration.
+8.  **Sync Option:** For **conflict**, choose **overwrite oldest** to ensure you always play the latest save file.
+9.  **Sync:** Just click sync whenever you want to play on a different device.
 
-        YourCloudStorage(onedrive/gdrive/etc):YourLocation
+---
 
-<br>
+### 💡 Pro-Tips for Farmers
+* **Sync Often:** Always sync **before** you start playing and **after** you save your game on Android.
+* **Consistency:** Ensure the cloud folder matches the location used by `stardewsync` on your Linux machine.
 
-(the same one that you connect on rclone, linux)
-
-7. Save
-
-8. Sync before and after you play on android ^_^
-
-<br>
-
-## 💡 Technical points:
-
-### XML Auto-Patching
-<br>
- Utilizes sed to automatically update <uiScale> and <zoomLevel> within the save files during the Restore process. This ensures the game's UI and scaling are perfectly adjusted the moment it's launched.
-
-### Rclone Integration
-<br>
- Leverages rclone to provide stable and reliable cloud synchronization with Google Drive.
-
-### GUI & Shortcut: 
-<br>
-Features an intuitive menu built with Zenity and a dedicated .desktop entry, allowing for a seamless "point-and-click" experience directly from the Ubuntu app launcher.
-
-
+**Enjoy your cross-platform farm between Linux and Android! :)**
 
 <br>
 
