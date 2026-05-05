@@ -71,6 +71,8 @@ Follow these steps to ensure your farm stays synced between your Windows PC and 
 6.  **Cloud Folder (Right):** Select **OneDrive** and navigate to:
     > `YourOneDrive\Stardew Save`
 7.  **Save:** Tap the save icon to store your configuration.
+8.  **Sync Option** For *conflict* choose *overwrite oldest* to ensure you play the latest save file
+9.  **Sync** Just click sync whenever you want to play on a different device
 
 ---
 
