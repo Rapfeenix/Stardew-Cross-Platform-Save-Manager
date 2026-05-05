@@ -102,7 +102,6 @@ The script will ask you to identify your installation type (e.g., Steam, Snap, o
 ### **Step 4: Sync Your Farm**
 Choose **Backup** or **Restore** from the menu.
 
----
 
 ### **Step 5: Daily Use**
 You can launch the sync manager whenever you want to play:
@@ -112,6 +111,7 @@ You can launch the sync manager whenever you want to play:
 **Enjoy your cross-platform farm between Linux and Android! :)**
 
 <br>
+
 ## 📱 How to Setup: Backup and Restore Stardew Valley Files (Cross-platform Linux)
 
 Follow these steps to ensure your farm stays synced between your Linux PC and your Android device using **FolderSync**.
@@ -136,9 +136,9 @@ Follow these steps to ensure your farm stays synced between your Linux PC and yo
 
 ### 💡 Pro-Tips for Farmers
 * **Sync Often:** Always sync **before** you start playing and **after** you save your game on Android.
-* **Consistency:** Ensure the cloud folder matches the location used by `stardewsync` on your Linux machine.
+* **Consistency:** Ensure the cloud folder matches the location used by `stardewsync` on your pc.
 
-**Enjoy your cross-platform farm between Linux and Android! :)**
+**Enjoy your cross-platform farm between pc and Android! :)**
 
 <br>
 
