@@ -39,51 +39,17 @@ We’ve kept the setup lean and native to your OS so you can spend more time far
 <br>
 
 
+## 🛠️ How to Set Up StardewSync on Windows
 
+* **Download:** Get the `StardewSync_Windows.zip` file.
+* **Extract:** Unzip the contents of the folder.
+* **Run Installer:** Double-click `installer.bat`. This will automatically detect your monitor's resolution and your Stardew Valley save paths.
+* **Launch:** Open the **StardewSync** shortcut created on your desktop.
+* **Sync:** Pick your choice (**Backup** or **Restore**) from the menu.
 
-## 🛠️ How to set up StardewSync on Windows:
+---
 
-1.Download StardewSync.txt
-
-2.Open it with text editor
-
-3.Change this:
-
-
-        set "REMOTE_SAVE=%OneDrive%\yourlocation"
-<br>
-
-to stardew valley save folder location that you want on onedrive
-
-<br>
-<br>
-
-4.Find this in the txt
-
-```
-<preferredResolutionX>1280</preferredResolutionX>
-````
-and this:
-
-```
-<preferredResolutionY>720</preferredResolutionY>
-```
-and change them to your monitor resolution
-
-
-5.Rename the extention of file from StardewSync.txt to StardewSync.bat
-
-<br>
-
-6.Run StardewSync.bat
-
-<br>
-
-7.Pick the choice that you want (backup/restore) 
-
-<br>
-
-8.Enjoy doing your farm in clossplatform for windows and android :)
+That’s it! Your farm is now synced and perfectly scaled for whatever screen you're using. Enjoy the cross-platform grind between Windows and Android! :)
 
 <br>
 <br>
