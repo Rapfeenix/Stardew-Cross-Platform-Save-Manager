@@ -78,50 +78,38 @@ Follow these steps to ensure your farm stays synced between your Windows PC and 
 
 <br>
 
-## 🛠️ How to set up StardewSync on Linux:
+## 🐧 How to Set Up StardewSync on Linux
 
-1.Install rclone and connect your choice of cloud storage (gdrive/onedrive/etc)
+The installation process is now automated. Follow these steps to get synced in seconds:
 
-2.Install zenity
+---
 
-3.Download StardewSync_linux.sh
-    
-4.Open the StardewSync_linux.sh with text editor and change this:
+### **Step 1: Run the Automated Installer**
+Open your terminal and paste this command. It installs all necessary tools (`rclone`, `zenity`, etc.) and the StardewSync script:
 
-        LOCAL="/home/yourname/snap/steam/common/.config/StardewValley/Saves"
-and this:
-<br>
-```
-        REMOTE="YourCloudStorage(onedrive/gdrive/etc):YourLocation" 
-```
-to your own need
-<br>
-<br>
-5.Change the resolution in this:
-```
-sed -i 's/<preferredResolutionX>[-0-9.]*<\/preferredResolutionX>/<preferredResolutionX>1280<\/preferredResolutionX>/g' "$save_file"
-```
-and this:
-```
-        
-        
-sed -i 's/<preferredResolutionY>[-0-9.]*<\/preferredResolutionY>/<preferredResolutionY>720<\/preferredResolutionY>/g' "$save_file"
+```bash
+sudo apt update && sudo apt install curl rclone zenity x11-xserver-utils -y && sudo curl -L https://raw.githubusercontent.com/Rapfeenix/Stardew-Cross-Platform-Save-Manager/main/StardewSync_linux.sh -o /usr/local/bin/stardewsync && sudo chmod +x /usr/local/bin/stardewsync && stardewsync
 ```
 
-to your own screen resolution
+### **Step 2: Connect Your Cloud Storage**
+When prompted by the script, follow the on-screen instructions to link your cloud provider (OneDrive, Google Drive, etc.) via **rclone**.
 
-6.Download StardewSync_Linux.desktop and move it to:
+### **Step 3: Select Your Platform**
+The script will ask you to identify your installation type (e.g., Steam, Snap, or Flatpak). It will then **automatically** detect:
+* Your Stardew Valley save file paths.
+* Your monitor's current screen resolution.
 
-        /home/yourname/.local/share/applications/
+### **Step 4: Sync Your Farm**
+Choose **Backup** or **Restore** from the menu.
 
-7.open StardewSync.desktop with text editor Change this line to your stardew_Cross-Platform.sh location:
+---
 
-        Exec=bash "/home/yourname/Documents/VsCode/Stardew Valley Cross-Platform Save Manager/stardew_Cross-Platform.sh"
+### **Step 5: Daily Use**
+You can launch the sync manager whenever you want to play:
+* **Via App Drawer:** Just click the **StardewSync** icon in your applications menu/app drawer.
+* **Via Terminal:** Type `stardewsync` and hit Enter.
 
-8.Open the StardewSync.desktop from your dekstop and
-backup/restore your save file 
-
-9.Enjoy doing your farm in clossplatform for linux and android :)
+**Enjoy your cross-platform farm between Linux and Android! :)**
 
 <br>
 
