@@ -54,25 +54,25 @@ That’s it! Your farm is now synced and perfectly scaled for whatever screen yo
 <br>
 <br>
 
-## How to setup: backup and restore Stardew valley files on your phone (crossplatform windows) 📱
+### 📱 How to Setup: Backup and Restore Stardew Valley Files (Cross-platform Windows)
 
-1. Download and install FolderSync from playstore 
-2. Add onedrive account that you used on your windows
-3. Create FolderPair
-4. Choose two way
-5. Get internal storage for the left folder and pick this location:
+Follow these steps to ensure your farm stays synced between your Windows PC and your Android device using **FolderSync**.
 
-        /storage/emulated/0/Android/data/com/chucklefish.stardewvalley/files/Saves/
+---
 
-6. Get cloud service for your right folder and pick this location:
+### ⚙️ Configuration Steps
 
-        Onedrive:YourLocation
-<br>
-(the same location that you put on StardewSync.bat)
+1.  **Download & Install:** Get [FolderSync](https://play.google.com/store/apps/details?id=dk.tacit.android.foldersync.lite) from the Google Play Store.
+2.  **Account Setup:** Add the **OneDrive** account that you use on your Windows PC.
+3.  **Create FolderPair:** Create a new "FolderPair" to link your local and cloud directories.
+4.  **Sync Type:** Select **Two-way** to ensure progress is updated on both your phone and the cloud.
+5.  **Local Folder (Left):** Select **Internal Storage** and navigate to the following path:
+    > `/storage/emulated/0/Android/data/com.chucklefish.stardewvalley/files/Saves/`
+6.  **Cloud Folder (Right):** Select **OneDrive** and navigate to:
+    > `YourOneDrive\Stardew Save`
+7.  **Save:** Tap the save icon to store your configuration.
 
-7. Save
-
-8. Sync before and after you play on android ^_^
+---
 
 <br>
 
