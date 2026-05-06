@@ -54,7 +54,7 @@ That’s it! Your farm is now synced and perfectly scaled for whatever screen yo
 <br>
 <br>
 
-### 📱 How to Setup: Backup and Restore Stardew Valley Files (Cross-platform Windows)
+### 📱 How to Setup (Android): Backup and Restore Stardew Valley Files (Cross-platform Windows)
 
 Follow these steps to ensure your farm stays synced between your Windows PC and your Android device using **FolderSync**.
 
@@ -112,7 +112,7 @@ You can launch the sync manager whenever you want to play:
 
 <br>
 
-## 📱 How to Setup: Backup and Restore Stardew Valley Files (Cross-platform Linux)
+## 📱 How to Setup (Android): Backup and Restore Stardew Valley Files (Cross-platform Linux)
 
 Follow these steps to ensure your farm stays synced between your Linux PC and your Android device using **FolderSync**.
 
