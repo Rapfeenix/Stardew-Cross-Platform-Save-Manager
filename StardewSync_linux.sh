@@ -126,36 +126,34 @@ find "$LOCAL" -type f -not -name "*SaveGameInfo*" -not -name "*.vdf" -not -name 
 
 
 auto_sync() {
-    zenity --info --title="Auto-Sync" --text="Analyzing local and cloud saves using hash checksums..." --timeout=2 --width=350
+    zenity --info --title="Auto-Sync" --text="Checking cloud and local save timestamps..." --timeout=2 --width=350
 
-    # 1. Use rclone check to see if local and cloud match perfectly
-    # It returns exit code 0 if they are identical, or 1 if they differ
-    rclone check "$LOCAL" "$REMOTE" --one-way --combined - 2>/dev/null
+    # 1. Cek kesamaan file via Hash Checksum terlebih dahulu
+    rclone check "$LOCAL" "$REMOTE" --one-way 2>/dev/null
     local check_status=$?
 
     if [ $check_status -eq 0 ]; then
-        # JIKA IDENTIK
         zenity --info --title="Up to Date" --text="✅ Both local and cloud saves are identical and fully up to date!" --width=350
         return 0
     fi
 
-    # 2. If they are different, let's see which one has the most recent action
-    # We grab the absolute latest local file change using stat
+    # 2. Ambil waktu lokal (File terdalam paling baru)
     local_time=$(find "$LOCAL" -type f -exec stat -c '%Y' {} + 2>/dev/null | sort -nr | head -n1)
     local_time=${local_time:-0}
 
-    # Instead of pulling full JSON strings, we use 'rclone lsf' with format 't' (Unix epoch)
-    # and use the recursive flag '-R' to dive into the save subfolders
-    remote_time=$(rclone lsf "$REMOTE" -R --format "t" --files-only 2>/dev/null | sort -r | head -n1)
+    # 3. SOLUSI DOKUMENTASI: Ambil waktu cloud murni menggunakan lsf format "t" 
+    # Karena kamu cuma pakai 1 karakter, kita urutkan filenya secara native dari rclone
+    remote_time=$(rclone lsf "$REMOTE" --files-only --format "t" --order-by modtime --reverse 2>/dev/null | head -n1)
+    
+    # Bersihkan angka desimal (jika ada) agar menjadi Unix Timestamp bulat
     remote_time=$(echo "${remote_time:-0}" | cut -d'.' -f1)
 
-    # Debug line so you can still track it in terminal
-    echo "DEBUG: Hash Mismatch found! Local Time: $local_time | Cloud Time: $remote_time"
+    # Debug untuk memastikan angka di terminal tidak ada yang bernilai 0 lagi
+    echo "DEBUG: Local is $local_time | Cloud is $remote_time"
 
-    # 3. Compare the numbers safely
+    # 4. Perbandingan Matematika Mutlak
     if [ "$local_time" -gt "$remote_time" ]; then
-        # LOCAL IS NEWER -> BACKUP
-        if zenity --question --title="Auto-Sync" --text="Your Local save contains newer modifications than the Cloud.\n\nWould you like to Backup to the cloud?" --width=350; then
+        if zenity --question --title="Auto-Sync" --text="Your Local save is newer than Cloud.\n\nWould you like to Backup to the cloud?" --width=350; then
             apply_anjay_settings
             if sync_with_progress "Backup" "$LOCAL" "$REMOTE"; then
                 zenity --info --title="Success" --text="✅ Auto-Backup successful!" --width=300
@@ -163,9 +161,8 @@ auto_sync() {
                 zenity --error --title="Error" --text="❌ Backup failed."
             fi
         fi
-    else
-        # CLOUD IS NEWER -> RESTORE
-        if zenity --question --title="Auto-Sync" --text="A newer save structure or modification was found in the Cloud.\n\nWould you like to Restore it to this PC?" --width=350; then
+    elif [ "$remote_time" -gt "$local_time" ]; then
+        if zenity --question --title="Auto-Sync" --text="A newer save was found in the Cloud.\n\nWould you like to Restore it to this PC?" --width=350; then
             if sync_with_progress "Restore" "$REMOTE" "$LOCAL"; then
                 apply_anjay_settings
                 zenity --info --title="Success" --text="✅ Auto-Restore & UI Adjustment successful!" --width=300
@@ -173,6 +170,8 @@ auto_sync() {
                 zenity --error --title="Error" --text="❌ Restore failed."
             fi
         fi
+    else
+        zenity --info --title="Up to Date" --text="✅ Both local and cloud saves are fully up to date!" --width=350
     fi
 }
 
