@@ -128,25 +128,27 @@ find "$LOCAL" -type f -not -name "*SaveGameInfo*" -not -name "*.vdf" -not -name 
 
 
 auto_sync() {
-    
     zenity --info --title="Auto-Sync" --text="Checking cloud and local save timestamps..." --timeout=2 --width=350
 
-    
-    local_time=$(stat -c %Y "$LOCAL" 2>/dev/null || echo 0)
+   
+    local_time=$(find "$LOCAL" -type f -exec stat -c '%Y' {} + 2>/dev/null | sort -nr | head -n1)
+    local_time=${local_time:-0}
 
+   
+    remote_time=$(rclone lsf "$REMOTE" --format "t" --files-only 2>/dev/null | sort -r | head -n1)
     
-    remote_time_str=$(rclone lsf "$REMOTE" --format "M" --files-only 2>/dev/null | sort -r | head -n1)
-    
-    if [ -z "$remote_time_str" ]; then
+    if [ -z "$remote_time" ]; then
         remote_time=0
     else
         
-        remote_time=$(date -d "$remote_time_str" +%s 2>/dev/null || echo 0)
+        remote_time=$(echo "$remote_time" | cut -d'.' -f1)
     fi
 
-  
+    
+    echo "DEBUG: Local is $local_time | Cloud is $remote_time"
+
+
     if [ "$local_time" -gt "$remote_time" ]; then
-        
         if zenity --question --title="Auto-Sync" --text="Your Local save is newer than Cloud.\n\nWould you like to Backup to the cloud?" --width=350; then
             apply_anjay_settings
             if sync_with_progress "Backup" "$LOCAL" "$REMOTE"; then
@@ -156,7 +158,6 @@ auto_sync() {
             fi
         fi
     elif [ "$remote_time" -gt "$local_time" ]; then
-       
         if zenity --question --title="Auto-Sync" --text="A newer save was found in the Cloud.\n\nWould you like to Restore it to this PC?" --width=350; then
             if sync_with_progress "Restore" "$REMOTE" "$LOCAL"; then
                 apply_anjay_settings
@@ -166,7 +167,6 @@ auto_sync() {
             fi
         fi
     else
-      
         zenity --info --title="Up to Date" --text="✅ Both local and cloud saves are identical and fully up to date!" --width=350
     fi
 }
