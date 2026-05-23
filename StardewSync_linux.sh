@@ -130,25 +130,25 @@ find "$LOCAL" -type f -not -name "*SaveGameInfo*" -not -name "*.vdf" -not -name 
 auto_sync() {
     zenity --info --title="Auto-Sync" --text="Checking cloud and local save timestamps..." --timeout=2 --width=350
 
-   
- local_time=$(find "$LOCAL" -type f -exec stat -c '%Y' {} + 2>/dev/null | sort -nr | head -n1)
+    # 1. Ambil waktu lokal (Mencari file yang paling baru diubah di PC)
+    local_time=$(find "$LOCAL" -type f -exec stat -c '%Y' {} + 2>/dev/null | sort -nr | head -n1)
     local_time=${local_time:-0}
 
-    # 2. SOLUSI BARU: Ambil waktu cloud dengan format teks standar rclone
-    remote_time_str=$(rclone lsf "$REMOTE" --format "M" --files-only 2>/dev/null | sort -r | head -n1)
-    
+    # 2. Ambil waktu cloud dengan lsjson (Mencari ModTime paling baru dari semua file di Cloud)
+    # Kita filter string "ModTime" menggunakan grep dan sed, lalu ambil yang paling baru
+    remote_time_str=$(rclone lsjson "$REMOTE" 2>/dev/null | grep -o '"ModTime":"[^"]*"' | sed 's/"ModTime":"//;s/"//' | sort -r | head -n1)
+
     if [ -z "$remote_time_str" ]; then
         remote_time=0
     else
-        # Kita paksa konversi string tanggal rclone (misal: 2026-05-24 14:00:00) menjadi Unix timestamp
-        # Menggunakan format '-u' (UTC) agar sinkron dengan server cloud manapun
-        remote_time=$(date -u -d "$remote_time_str" +%s 2>/dev/null || echo 0)
+        # Konversi waktu ISO 8601 dari Google Drive (JSON) menjadi Unix Timestamp standar
+        remote_time=$(date -d "$remote_time_str" +%s 2>/dev/null || echo 0)
     fi
 
-    
+    # Debug line untuk memantau di Terminal
     echo "DEBUG: Local is $local_time | Cloud is $remote_time"
 
-
+    # 3. Proses perbandingan matematika
     if [ "$local_time" -gt "$remote_time" ]; then
         if zenity --question --title="Auto-Sync" --text="Your Local save is newer than Cloud.\n\nWould you like to Backup to the cloud?" --width=350; then
             apply_anjay_settings
@@ -171,7 +171,6 @@ auto_sync() {
         zenity --info --title="Up to Date" --text="✅ Both local and cloud saves are identical and fully up to date!" --width=350
     fi
 }
-
 
 choice=$(zenity --list --title="StardewSync CrossPlatform-Save" \
     --column="Options" \
