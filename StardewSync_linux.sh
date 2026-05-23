@@ -130,22 +130,21 @@ find "$LOCAL" -type f -not -name "*SaveGameInfo*" -not -name "*.vdf" -not -name 
 auto_sync() {
     zenity --info --title="Auto-Sync" --text="Checking cloud and local save timestamps..." --timeout=2 --width=350
 
-    # 1. Ambil waktu lokal (Mencari file yang paling baru diubah di PC)
+    # 1. Ambil waktu lokal (Mencari file paling baru di PC)
     local_time=$(find "$LOCAL" -type f -exec stat -c '%Y' {} + 2>/dev/null | sort -nr | head -n1)
     local_time=${local_time:-0}
 
-    # 2. Ambil waktu cloud dengan lsjson (Mencari ModTime paling baru dari semua file di Cloud)
-    # Kita filter string "ModTime" menggunakan grep dan sed, lalu ambil yang paling baru
-    remote_time_str=$(rclone lsjson "$REMOTE" 2>/dev/null | grep -o '"ModTime":"[^"]*"' | sed 's/"ModTime":"//;s/"//' | sort -r | head -n1)
+    # 2. SOLUSI FIX: Paksa rclone urutkan berdasarkan ModTime terupdate, ambil 1 file teratas
+    remote_time_str=$(rclone lsjson "$REMOTE" --files-only --order-by modtime --reverse 2>/dev/null | grep -o '"ModTime":"[^"]*"' | sed 's/"ModTime":"//;s/"//' | head -n1)
 
     if [ -z "$remote_time_str" ]; then
         remote_time=0
     else
-        # Konversi waktu ISO 8601 dari Google Drive (JSON) menjadi Unix Timestamp standar
-        remote_time=$(date -d "$remote_time_str" +%s 2>/dev/null || echo 0)
+        # Konversi ke Unix timestamp
+        remote_time=$(date -u -d "$remote_time_str" +%s 2>/dev/null || echo 0)
     fi
 
-    # Debug line untuk memantau di Terminal
+    # Debug line
     echo "DEBUG: Local is $local_time | Cloud is $remote_time"
 
     # 3. Proses perbandingan matematika
