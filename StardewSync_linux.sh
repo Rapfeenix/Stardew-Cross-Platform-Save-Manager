@@ -128,7 +128,7 @@ find "$LOCAL" -type f -not -name "*SaveGameInfo*" -not -name "*.vdf" -not -name 
 auto_sync() {
     zenity --info --title="Auto-Sync" --text="Analyzing local and cloud saves using hash checksums..." --timeout=2 --width=350
 
-    # 1. FIX: Hapus tanda '-' di ujung agar rclone check tidak macet/stuck menunggu input terminal
+   
     rclone check "$LOCAL" "$REMOTE" --one-way 2>/dev/null
     local check_status=$?
 
@@ -137,17 +137,17 @@ auto_sync() {
         return 0
     fi
 
-    # 2. Ambil data timestamp lokal
+   
     local_time=$(find "$LOCAL" -type f -exec stat -c '%Y' {} + 2>/dev/null | sort -nr | head -n1)
     local_time=${local_time:-0}
 
-    # Ambil data timestamp cloud lewat rclone lsf -R
+   
     remote_time=$(rclone lsf "$REMOTE" -R --format "t" --files-only 2>/dev/null | sort -r | head -n1)
     remote_time=$(echo "${remote_time:-0}" | cut -d'.' -f1)
 
     echo "DEBUG: Hash Mismatch found! Local Time: $local_time | Cloud Time: $remote_time"
 
-    # 3. FIX LOGIKA: Pisahkan perbandingan dengan adil menggunakan math conditional lengkap
+    
     if [ "$local_time" -gt "$remote_time" ]; then
         # LOCAL LEBIH BARU -> BACKUP
         if zenity --question --title="Auto-Sync" --text="Your Local save contains newer modifications than the Cloud.\n\nWould you like to Backup to the cloud?" --width=350; then
@@ -159,7 +159,7 @@ auto_sync() {
             fi
         fi
     elif [ "$remote_time" -gt "$local_time" ]; then
-        # CLOUD LEBIH BARU -> RESTORE
+        
         if zenity --question --title="Auto-Sync" --text="A newer save structure or modification was found in the Cloud.\n\nWould you like to Restore it to this PC?" --width=350; then
             if sync_with_progress "Restore" "$REMOTE" "$LOCAL"; then
                 apply_anjay_settings
@@ -169,7 +169,7 @@ auto_sync() {
             fi
         fi
     else
-        # JIKA TIMESTAMP SAMA TAPI HASH BEDA (Sangat Jarang, Pengaman Konflik)
+        
         if zenity --question --title="Conflict Detected" --text="Saves differ but share the same timestamp.\n\nDo you want to FORCE Backup your local PC data to the Cloud?" --width=350; then
             apply_anjay_settings
             sync_with_progress "Backup" "$LOCAL" "$REMOTE"
