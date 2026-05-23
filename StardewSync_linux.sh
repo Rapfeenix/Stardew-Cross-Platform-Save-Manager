@@ -131,17 +131,18 @@ auto_sync() {
     zenity --info --title="Auto-Sync" --text="Checking cloud and local save timestamps..." --timeout=2 --width=350
 
    
-    local_time=$(find "$LOCAL" -type f -exec stat -c '%Y' {} + 2>/dev/null | sort -nr | head -n1)
+ local_time=$(find "$LOCAL" -type f -exec stat -c '%Y' {} + 2>/dev/null | sort -nr | head -n1)
     local_time=${local_time:-0}
 
-   
-    remote_time=$(rclone lsf "$REMOTE" --format "t" --files-only 2>/dev/null | sort -r | head -n1)
+    # 2. SOLUSI BARU: Ambil waktu cloud dengan format teks standar rclone
+    remote_time_str=$(rclone lsf "$REMOTE" --format "M" --files-only 2>/dev/null | sort -r | head -n1)
     
-    if [ -z "$remote_time" ]; then
+    if [ -z "$remote_time_str" ]; then
         remote_time=0
     else
-        
-        remote_time=$(echo "$remote_time" | cut -d'.' -f1)
+        # Kita paksa konversi string tanggal rclone (misal: 2026-05-24 14:00:00) menjadi Unix timestamp
+        # Menggunakan format '-u' (UTC) agar sinkron dengan server cloud manapun
+        remote_time=$(date -u -d "$remote_time_str" +%s 2>/dev/null || echo 0)
     fi
 
     
