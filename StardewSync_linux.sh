@@ -135,7 +135,7 @@ find "$LOCAL" -type f -not -name "*SaveGameInfo*" -not -name "*.vdf" -not -name 
             -e "s/<preferredResolutionX>[0-9.]*<\/preferredResolutionX>/<preferredResolutionX>${WIDTH}<\/preferredResolutionX>/g" \
             -e "s/<preferredResolutionY>[0-9.]*<\/preferredResolutionY>/<preferredResolutionY>${HEIGHT}<\/preferredResolutionY>/g" \
             -e 's/<uiScale>[0-9.]*<\/uiScale>/<uiScale>1<\/uiScale>/g' \
-            -e 's/<zoomLevel>[0-9.]*<\/zoomLevel>/<zoomLevel>1<\/zoomLevel>/g' \
+            -e 's/<zoomLevel>[0-9.]*<\/zoomLevel>/<zoomLevel>0.5<\/zoomLevel>/g' \
             "$save_file"
     done
 }
