@@ -21,7 +21,7 @@ function Apply-StardewFix($targetWidth, $targetHeight) {
         $content = $content -replace '<preferredResolutionX>[-0-9.]*</preferredResolutionX>', "<preferredResolutionX>$targetWidth</preferredResolutionX>"
         $content = $content -replace '<preferredResolutionY>[-0-9.]*</preferredResolutionY>', "<preferredResolutionY>$targetHeight</preferredResolutionY>"
         $content = $content -replace '<uiScale>[-0-9.]*</uiScale>', '<uiScale>1</uiScale>'
-        $content = $content -replace '<zoomLevel>[-0-9.]*</zoomLevel>', '<zoomLevel>1</zoomLevel>'
+        $content = $content -replace '<zoomLevel>[-0-9.]*</zoomLevel>', '<zoomLevel>0.5</zoomLevel>'
         
     
         [System.IO.File]::WriteAllText($file.FullName, $content)
