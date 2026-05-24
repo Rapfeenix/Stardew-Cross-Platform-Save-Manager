@@ -159,13 +159,18 @@ case "$choice" in
         fi
         ;;
         
-    *"Restore"*)
+*"Restore"*)
+        
+        LOCAL_BACKUP_DIR="${LOCAL}_Backup_Lokal"
+        mkdir -p "$LOCAL_BACKUP_DIR"
+        
+        cp -r "$LOCAL"/* "$LOCAL_BACKUP_DIR/" 2>/dev/null
         
         if sync_with_progress "Restore" "$REMOTE" "$LOCAL"; then
             apply_anjay_settings
             zenity --info --title="Success" \
-                --text="<span font='13'>✅ <b>Retrieval & UI Adjustment Successful!</b>\n\nWelcome back to the farm!</span>" \
-                --width=400
+                --text="<span font='13'>✅ <b>Retrieval & UI Adjustment Successful!</b>\n\nWelcome back to the farm!\n\n<i>*Note: Save PC lama kamu dikloning dengan aman di folder:\n<b>${LOCAL}_Backup_Lokal</b>\njika kamu salah pencet.</i></span>" \
+                --width=450
         else
             zenity --error --title="Error" --text="❌ Retrieval failed."
         fi
