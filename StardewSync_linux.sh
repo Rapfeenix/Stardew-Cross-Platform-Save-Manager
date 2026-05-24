@@ -169,7 +169,7 @@ case "$choice" in
         if sync_with_progress "Restore" "$REMOTE" "$LOCAL"; then
             apply_anjay_settings
             zenity --info --title="Success" \
-                --text="<span font='13'>✅ <b>Retrieval & UI Adjustment Successful!</b>\n\nWelcome back to the farm!\n\n<i>*Note: Save PC lama kamu dikloning dengan aman di folder:\n<b>${LOCAL}_Backup_Lokal</b>\njika kamu salah pencet.</i></span>" \
+                --text="<span font='13'>✅ <b>Retrieval & UI Adjustment Successful!</b>\n\nWelcome back to the farm!</span>" \
                 --width=450
         else
             zenity --error --title="Error" --text="❌ Retrieval failed."
