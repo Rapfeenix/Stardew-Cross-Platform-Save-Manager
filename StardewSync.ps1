@@ -45,7 +45,7 @@ do {
     
     $choice = Read-Host "Choose [1-5]"
 
-    switch ($choice) {
+ switch ($choice) {
         "1" {
             Apply-StardewFix 1280 720
             if (-not (Test-Path $remoteSave)) { New-Item -ItemType Directory -Path $remoteSave -Force }
@@ -54,6 +54,13 @@ do {
         }
         "2" {
             if (Test-Path $remoteSave) {
+               
+                $localBackupDir = "${localSave}_Backup_Lokal"
+                if (-not (Test-Path $localBackupDir)) { New-Item -ItemType Directory -Path $localBackupDir -Force }
+                if (Test-Path "$localSave\*") { 
+                    Copy-Item -Path "$localSave\*" -Destination $localBackupDir -Recurse -Force -ErrorAction SilentlyContinue 
+                }
+               
                 Copy-Item -Path "$remoteSave\*" -Destination $localSave -Recurse -Force
                 Apply-StardewFix $pcWidth $pcHeight
                 [System.Windows.MessageBox]::Show("Success: Restored and UI fixed to $pcWidth x $pcHeight!")
